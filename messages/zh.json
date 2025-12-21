@@ -1,5 +1,9 @@
 {
   "Index": {
-    "AppTitle": "用值"
+    "AppTitle": "用值",
+    "StatsTitle": "统计",
+    "ArchiveTitle": "归档",
+    "AiTitle": "值仔",
+    "SettingsTitle": "设置"
   }
 }

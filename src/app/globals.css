@@ -2,31 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
-  这里定义两套变量：
-  1. 我们自己的语义化变量 (用于 Tailwind)
-  2. Antd Mobile 的组件变量 (以 --adm 开头，用于覆盖 Antd Mobile 默认样式)
-*/
 :root {
-  /* --- 基础色板 (参考 Ant Design) --- */
-  --primary: #1677ff;
-  --primary-foreground: #ffffff;
+  /* --- 基础色板  --- */
+  --primary: #b1f641;
   
-  --background: #ffffff;
-  --foreground: #0f172a; /* Slate-900 */
+  --background: #f4f5fb;
+  --foreground: #feffff; /* Slate-900 */
+
+  --font-color: #000000;
+  --font-color-secondary: #616767;
   
-  --surface: #f8fafc; /* Slate-50 */
+  --surface: #ffffff; /* Slate-50 */
   --surface-foreground: #0f172a;
   
-  --border: #e2e8f0; /* Slate-200 */
+  --border: #e5e8eb70; /* Slate-200 */
   --input: #e2e8f0;
   --ring: #1677ff;
 
-  /* --- Antd Mobile 变量覆盖 (保持风格一致) --- */
-  --adm-color-primary: var(--primary);
-  --adm-color-background: var(--background);
-  --adm-color-text: var(--foreground);
-  --adm-button-border-radius: 8px; /* 更圆润一点 */
+  --font-family-title: 'Source Han Sans', 'Microsoft YaHei', sans-serif;
+
+  --ai: #a6e541;
+
+  --ai-color: var(--ai);
 }
 
 /* 暗色模式 (通过 data-theme='dark' 触发，比媒体查询更可控) */
@@ -47,6 +44,18 @@
   /* Antd Mobile Dark overrides */
   --adm-color-box: #171717; /* 卡片背景 */
   --adm-border-color: #262626;
+
+  /* 底部导航栏暗色模式变量 */
+  --nav-bg: var(--background);
+  --nav-border: var(--border);
+  --nav-active-bg: var(--surface);
+  --nav-active-text: var(--foreground);
+  --nav-inactive-text: #9ca3af; /* gray-400 for dark mode */
+  --nav-add-button-bg: #4ea6b1; /* green-500 */
+  --nav-add-button-hover: #afc8c0; /* green-600 */
+  
+  /* AI 主题色暗色模式变量 */
+  --ai-color: var(--primary);
 }
 
 body {

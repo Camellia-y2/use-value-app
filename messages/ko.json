@@ -1,5 +1,9 @@
 {
   "Index": {
-    "AppTitle": "용치"
+    "AppTitle": "용치",
+    "StatsTitle": "통계",
+    "ArchiveTitle": "아카이브",
+    "AiTitle": "값돌이",
+    "SettingsTitle": "설정"
   }
 }

@@ -4,6 +4,7 @@ import "../globals.css";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import StoreProvider from "@/store/StoreProvider";
+import AppLayout from "@/components/AppLayout";
 import React, { ReactNode } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -27,7 +28,9 @@ export default async function RootLayout({
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}> {/* 提供语言包 */}
           <StoreProvider>
-            {children}
+            <AppLayout>
+              {children}
+            </AppLayout>
           </StoreProvider>
         </NextIntlClientProvider>
       </body>

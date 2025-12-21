@@ -1,5 +1,9 @@
 {
   "Index": {
-    "AppTitle": "Use Value"
+    "AppTitle": "Use Value",
+    "StatsTitle": "Stats",
+    "ArchiveTitle": "Archive",
+    "AiTitle": "Value Agent",
+    "SettingsTitle": "Settings"
   }
 }

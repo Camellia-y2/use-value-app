@@ -1,5 +1,9 @@
 {
   "Index": {
-    "AppTitle": "用値"
+    "AppTitle": "用値",
+    "StatsTitle": "統計",
+    "ArchiveTitle": "アーカイブ",
+    "AiTitle": "値仔",
+    "SettingsTitle": "設定"
   }
 }
