@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  这里定义两套变量：
+  1. 我们自己的语义化变量 (用于 Tailwind)
+  2. Antd Mobile 的组件变量 (以 --adm 开头，用于覆盖 Antd Mobile 默认样式)
+*/
+:root {
+  /* --- 基础色板 (参考 Ant Design) --- */
+  --primary: #1677ff;
+  --primary-foreground: #ffffff;
+  
+  --background: #ffffff;
+  --foreground: #0f172a; /* Slate-900 */
+  
+  --surface: #f8fafc; /* Slate-50 */
+  --surface-foreground: #0f172a;
+  
+  --border: #e2e8f0; /* Slate-200 */
+  --input: #e2e8f0;
+  --ring: #1677ff;
+
+  /* --- Antd Mobile 变量覆盖 (保持风格一致) --- */
+  --adm-color-primary: var(--primary);
+  --adm-color-background: var(--background);
+  --adm-color-text: var(--foreground);
+  --adm-button-border-radius: 8px; /* 更圆润一点 */
+}
+
+/* 暗色模式 (通过 data-theme='dark' 触发，比媒体查询更可控) */
+[data-theme='dark'] {
+  --primary: #1677ff; /* 暗色下保持蓝色，或者稍微调亮 */
+  --primary-foreground: #ffffff;
+  
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  
+  --surface: #171717; /* Neutral-900 */
+  --surface-foreground: #ededed;
+  
+  --border: #262626;
+  --input: #262626;
+  --ring: #1668dc;
+
+  /* Antd Mobile Dark overrides */
+  --adm-color-box: #171717; /* 卡片背景 */
+  --adm-border-color: #262626;
+}
+
+body {
+  @apply bg-background text-foreground;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
