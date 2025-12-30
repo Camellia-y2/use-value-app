@@ -65,3 +65,33 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+a {
+  color: inherit; /* 文字颜色继承自父元素 */
+  text-decoration: none; /* 去除下划线 */
+  cursor: pointer; /* 鼠标悬停时显示手形图标 */
+  outline: none; /* 去除点击时的轮廓 */
+  display: block;
+}
+
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none; /* 悬停、聚焦和激活时不显示下划线 */
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: fit-content;
+  font-size: 40px;
+  font-family: system-ui, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #0000;
+  -webkit-text-stroke: 1px #000;
+  background: linear-gradient(90deg, #000 33%, #0879f9 0 67%, #000 0) 0/300%
+    100% no-repeat text;
+  animation: l2 2s linear infinite;
+}
+.loader:before {
+  content: "Loading UseValue";
+}

@@ -4,7 +4,7 @@ import { useLocale } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { IconSearch, IconBrain } from '@tabler/icons-react';
 import Link from 'next/link';
-import { IconButton } from '@mui/material';
+import { Button } from 'antd';
 import { path } from '@/lib/paths';
 
 export default function TopNav() {
@@ -35,22 +35,24 @@ export default function TopNav() {
     }}
     >
       <Link href={path(locale, 'search')}>
-        <IconButton
-          sx={{
+        <Button
+          type="text"
+          className="flex items-center justify-center w-10 h-10 p-0 border-0 shadow-none"
+          style={{
             color: 'var(--font-color)',
           }}
-        >
-          <IconSearch className="w-6 h-6" strokeWidth={2.5} />
-        </IconButton>
+          icon={<IconSearch className="w-6 h-6" strokeWidth={2.5} />}
+        />
       </Link>
       <Link href={path(locale, 'ai')}>
-        <IconButton
-          sx={{
+        <Button
+          type="text"
+          className="flex items-center justify-center w-10 h-10 p-0 border-0 shadow-none"
+          style={{
             color: 'var(--ai-color)',
           }}
-        >
-          <IconBrain className="w-6 h-6" strokeWidth={2.5} />
-        </IconButton>
+          icon={<IconBrain className="w-6 h-6" strokeWidth={2.5} />}
+        />
       </Link>
     </div>
   );

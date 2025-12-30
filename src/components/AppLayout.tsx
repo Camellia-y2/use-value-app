@@ -4,7 +4,6 @@ import { ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
 import TopNav from '@/components/TopNav';
 import BottomNav from '@/components/BottomNav';
-import { Stack, Typography } from '@mui/material';
 import { useTranslations, useLocale } from 'next-intl';
 import { path } from '@/lib/paths';
 
@@ -75,18 +74,18 @@ export default function AppLayout({ children }: AppLayoutProps) {
         )}
         <div style={{ position: 'relative', zIndex: 1 }}>
           {!shouldHideTitle() && (
-            <Stack direction="row" spacing={2}>
-              <Typography fontWeight="bold" color="var(--font-color)" 
-              sx={{
-                marginLeft: 1,
-                marginTop: 1,
-                fontSize: '1.9rem',
-                fontFamily: 'var(--font-family-title)'
-              }}>
+            <div className="flex flex-row items-center gap-2">
+              <h1 
+                className="ml-4 mt-4 font-bold text-[1.9rem]"
+                style={{
+                  color: 'var(--font-color)',
+                  fontFamily: 'var(--font-family-title)'
+                }}
+              >
                 {getPageTitle()}
-              </Typography>
+              </h1>
               <TopNav />
-            </Stack>
+            </div>
           )}
           {children}
         </div>

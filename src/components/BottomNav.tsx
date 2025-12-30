@@ -2,8 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
-import { BottomNavigation, BottomNavigationAction, Fab } from '@mui/material';
-import Link from 'next/link';
+import { Button } from 'antd';
 import { 
   IconHomeFilled, 
   IconArchiveFilled, 
@@ -72,49 +71,22 @@ export default function BottomNav() {
     },
   ];
 
-  const handleChange = (_event: React.SyntheticEvent, newValue: string) => {
+  const handleChange = (newValue: string) => {
     router.push(newValue);
   };
 
   return (
-    <div>
-    <div className="fixed bottom-4 left-1 right-1 z-50 px-4 pb-safe">
-      <div className="relative  mx-auto">
-        <div 
-          className="relative overflow-hidden rounded-full border-2"
-          style={{ 
-            backgroundColor: 'var(--surface)', 
-            width: '83%',
-            borderColor: 'transparent',
-            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.01), 0 2px 4px rgba(0, 0, 0, 0.02), 0 -4px 6px rgba(0, 0, 0, 0.01), 0 -2px 4px rgba(0, 0, 0, 0.01)'
-          }}
-        >
-          <BottomNavigation
-            value={activeKey}
-            onChange={handleChange}
-            sx={{
-              padding: '4px',
-              width: '100%',
+    <>
+      <div className="fixed bottom-4 left-1 right-1 z-50 px-4 pb-safe">
+        <div className="relative mx-auto">
+          <div 
+            className="relative overflow-hidden rounded-full border-2 flex items-center justify-between p-1"
+            style={{ 
+              backgroundColor: 'var(--surface)', 
+              width: '83%',
               height: '60px',
-              position: 'relative',
-              display: 'flex',
-              justifyContent: 'flex-start',
-              gap: '4px',
-              '& .MuiBottomNavigationAction-root': {
-                padding: '4px 8px',
-                width: '78px',
-                height: '52px',
-                borderRadius: '30px',
-                transition: 'all 0.2s',
-                minWidth: 'auto',
-                flex: '0 1 auto',
-                '&.Mui-selected': {
-                  backgroundColor: 'var(--background)',
-                },
-                '& .MuiBottomNavigationAction-label': {
-                  display: 'none !important',
-                },
-              },
+              borderColor: 'transparent',
+              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.01), 0 2px 4px rgba(0, 0, 0, 0.02), 0 -4px 6px rgba(0, 0, 0, 0.01), 0 -2px 4px rgba(0, 0, 0, 0.01)'
             }}
           >
             {/* 所有导航项 */}
@@ -123,45 +95,40 @@ export default function BottomNav() {
               const isActive = activeKey === item.key;
               
               return (
-                <BottomNavigationAction
+                <Button
                   key={item.key}
-                  value={item.key}
-                  label=""
-                  icon={
-                    <Icon
-                      style={{
-                        color: isActive 
-                          ? 'var(--font-color)' 
-                          : 'var(--font-color-secondary)',
-                      }}
-                    />
-                  }
+                  type="text"
+                  onClick={() => handleChange(item.key)}
+                  className="flex items-center justify-center flex-1 h-[52px] rounded-[30px] transition-all p-1"
+                  style={{
+                    backgroundColor: isActive ? 'var(--background)' : 'transparent',
+                    color: isActive 
+                      ? 'var(--font-color)' 
+                      : 'var(--font-color-secondary)',
+                  }}
+                  icon={<Icon className="w-6 h-6" strokeWidth={2.5} />}
                 />
               );
             })}
-          </BottomNavigation>
+          </div>
         </div>
       </div>
-    </div>
-     {/* 添加按钮 - 大圆形，在导航栏右边 */}
-     <Fab
-       onClick={() => router.push(path(locale, 'add'))}
-       sx={{
-         position: 'fixed',
-         bottom: '20px',
-         right: '16px',
-         width: 56,
-         height: 56,
-         color: 'var(--font-color)',
-         backgroundColor: activeKey === path(locale, 'add') 
-           ? 'var(--primary)' 
-           : 'var(--primary)',
-         boxShadow: '0 10px 15px -6px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.02)',
-         zIndex: 50,
-       }}
-     >
-       <IconPlus className="w-7 h-7" strokeWidth={2.5} />
-     </Fab>
-   </div>
+      {/* 添加按钮 - 大圆形，在导航栏右边 */}
+      <Button
+        type="primary"
+        shape="circle"
+        onClick={() => router.push(path(locale, 'add'))}
+        className="fixed bottom-5 right-4 z-50 flex items-center justify-center"
+        style={{
+          width: 56,
+          height: 56,
+          backgroundColor: 'var(--primary)',
+          color: 'var(--font-color)',
+          boxShadow: '0 10px 15px -6px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.02)',
+          border: 'none',
+        }}
+        icon={<IconPlus className="w-7 h-7" strokeWidth={2.5} />}
+      />
+    </>
   );
 }
