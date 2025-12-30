@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import StoreProvider from "@/store/StoreProvider";
 import AppLayout from "@/components/AppLayout";
+import ThemeProvider from "@/components/ThemeProvider";
 import React, { ReactNode } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,13 +27,15 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className={inter.className}>
-        <NextIntlClientProvider messages={messages}> {/* 提供语言包 */}
-          <StoreProvider>
-            <AppLayout>
-              {children}
-            </AppLayout>
-          </StoreProvider>
-        </NextIntlClientProvider>
+        <ThemeProvider>
+          <NextIntlClientProvider messages={messages}> {/* 提供语言包 */}
+            <StoreProvider>
+              <AppLayout>
+                {children}
+              </AppLayout>
+            </StoreProvider>
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
