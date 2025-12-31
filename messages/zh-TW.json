@@ -4,6 +4,31 @@
     "StatsTitle": "統計",
     "ArchiveTitle": "歸檔",
     "AiTitle": "值仔",
-    "SettingsTitle": "設置"
+    "SettingsTitle": "設置",
+    "HomePageTitle": "首頁",
+    "HomePageDesc": "管理和查看在役資產",
+    "SearchPageTitle": "搜尋頁",
+    "SearchPageDesc": "查找資產",
+    "AIPageTitle": "AI 管家頁（值仔）",
+    "AIPageDesc": "AI 洞察和建議",
+    "AddPageTitle": "添加物品頁",
+    "AddPageDesc": "錄入新資產",
+    "ArchivePageTitle": "歸檔頁",
+    "ArchivePageDesc": "展示已提取的全部價值",
+    "StatsPageTitle": "統計頁",
+    "StatsPageDesc": "資產數據可視化分析"
+  },
+  "Settings": {
+    "Title": "設置",
+    "DarkTheme": "暗色主題",
+    "Language": "語言",
+    "LanguageDesc": "選擇應用語言"
+  },
+  "Languages": {
+    "zh": "简体中文",
+    "en": "English",
+    "ja": "日本語",
+    "ko": "한국어",
+    "zh-TW": "繁體中文"
   }
 }

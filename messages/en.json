@@ -4,6 +4,31 @@
     "StatsTitle": "Stats",
     "ArchiveTitle": "Archive",
     "AiTitle": "Value Agent",
-    "SettingsTitle": "Settings"
+    "SettingsTitle": "Settings",
+    "HomePageTitle": "Home",
+    "HomePageDesc": "Manage and view active assets",
+    "SearchPageTitle": "Search",
+    "SearchPageDesc": "Find assets",
+    "AIPageTitle": "AI Assistant (Value Agent)",
+    "AIPageDesc": "AI insights and recommendations",
+    "AddPageTitle": "Add Item",
+    "AddPageDesc": "Record new asset",
+    "ArchivePageTitle": "Archive",
+    "ArchivePageDesc": "Show all extracted value",
+    "StatsPageTitle": "Stats",
+    "StatsPageDesc": "Asset data visualization and analysis"
+  },
+  "Settings": {
+    "Title": "Settings",
+    "DarkTheme": "Dark Theme",
+    "Language": "Language",
+    "LanguageDesc": "Select app language"
+  },
+  "Languages": {
+    "zh": "简体中文",
+    "en": "English",
+    "ja": "日本語",
+    "ko": "한국어",
+    "zh-TW": "繁體中文"
   }
 }

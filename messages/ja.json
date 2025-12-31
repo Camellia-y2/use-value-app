@@ -4,6 +4,31 @@
     "StatsTitle": "統計",
     "ArchiveTitle": "アーカイブ",
     "AiTitle": "値仔",
-    "SettingsTitle": "設定"
+    "SettingsTitle": "設定",
+    "HomePageTitle": "ホーム",
+    "HomePageDesc": "アクティブな資産を管理・表示",
+    "SearchPageTitle": "検索",
+    "SearchPageDesc": "資産を検索",
+    "AIPageTitle": "AIアシスタント（値仔）",
+    "AIPageDesc": "AIインサイトと推奨事項",
+    "AddPageTitle": "アイテム追加",
+    "AddPageDesc": "新しい資産を記録",
+    "ArchivePageTitle": "アーカイブ",
+    "ArchivePageDesc": "抽出されたすべての価値を表示",
+    "StatsPageTitle": "統計",
+    "StatsPageDesc": "資産データの可視化と分析"
+  },
+  "Settings": {
+    "Title": "設定",
+    "DarkTheme": "ダークテーマ",
+    "Language": "言語",
+    "LanguageDesc": "アプリの言語を選択"
+  },
+  "Languages": {
+    "zh": "简体中文",
+    "en": "English",
+    "ja": "日本語",
+    "ko": "한국어",
+    "zh-TW": "繁體中文"
   }
 }

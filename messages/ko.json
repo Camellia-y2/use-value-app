@@ -4,6 +4,31 @@
     "StatsTitle": "통계",
     "ArchiveTitle": "아카이브",
     "AiTitle": "값돌이",
-    "SettingsTitle": "설정"
+    "SettingsTitle": "설정",
+    "HomePageTitle": "홈",
+    "HomePageDesc": "활성 자산 관리 및 보기",
+    "SearchPageTitle": "검색",
+    "SearchPageDesc": "자산 찾기",
+    "AIPageTitle": "AI 어시스턴트 (값돌이)",
+    "AIPageDesc": "AI 인사이트 및 권장사항",
+    "AddPageTitle": "항목 추가",
+    "AddPageDesc": "새 자산 기록",
+    "ArchivePageTitle": "아카이브",
+    "ArchivePageDesc": "추출된 모든 가치 표시",
+    "StatsPageTitle": "통계",
+    "StatsPageDesc": "자산 데이터 시각화 및 분석"
+  },
+  "Settings": {
+    "Title": "설정",
+    "DarkTheme": "다크 테마",
+    "Language": "언어",
+    "LanguageDesc": "앱 언어 선택"
+  },
+  "Languages": {
+    "zh": "简体中文",
+    "en": "English",
+    "ja": "日本語",
+    "ko": "한국어",
+    "zh-TW": "繁體中文"
   }
 }
