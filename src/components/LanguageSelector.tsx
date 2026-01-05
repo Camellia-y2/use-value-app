@@ -1,17 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { Drawer, List } from 'antd';
-import { IconChevronDown, IconCheck } from '@tabler/icons-react';
+import { Drawer } from 'antd';
+import { IconChevronRight, IconCheck } from '@tabler/icons-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 
 const languages = [
   { code: 'zh', name: '简体中文' },
   { code: 'en', name: 'English' },
+  { code: 'zh-TW', name: '繁體中文' },
   { code: 'ja', name: '日本語' },
   { code: 'ko', name: '한국어' },
-  { code: 'zh-TW', name: '繁體中文' },
 ];
 
 export default function LanguageSelector() {
@@ -20,66 +20,73 @@ export default function LanguageSelector() {
   const router = useRouter();
   const pathname = usePathname();
   const t = useTranslations('Languages');
+  const ts = useTranslations('Settings');
 
   const currentLanguage = languages.find(lang => lang.code === locale) || languages[0];
 
+  // 处理语言切换，确保切换语言后仍停留在当前页
   const handleLanguageChange = (newLocale: string) => {
     setOpen(false);
-    // 获取当前路径（去掉 locale 前缀）
     const pathWithoutLocale = pathname.replace(`/${locale}`, '') || '/';
-    // 确保路径以 / 开头
     const targetPath = pathWithoutLocale.startsWith('/') ? pathWithoutLocale : `/${pathWithoutLocale}`;
-    // 跳转到新语言对应的路径
-    router.push(`/${newLocale}${targetPath}`);
-    router.refresh(); // 刷新页面以加载新的语言包
+    router.push(`/${newLocale}${targetPath}`); // 跳转新语言的路径
+    router.refresh(); // 强制刷新
   };
 
   return (
     <>
       <div 
-        className="flex items-center justify-between cursor-pointer"
+        className="flex items-center gap-1 cursor-pointer"
         onClick={() => setOpen(true)}
       >
-        <span style={{ color: 'var(--font-color)' }}>
+        <span style={{ color: 'var(--font-color-secondary)' }}>
           {t(currentLanguage.code as any) || currentLanguage.name}
         </span>
-        <IconChevronDown className="w-4 h-4" style={{ color: 'var(--font-color-secondary)' }} />
+        <IconChevronRight size={18} style={{ color: 'var(--font-color-secondary)' }} />
       </div>
+
       <Drawer
-        title={t(currentLanguage.code as any) || currentLanguage.name}
+        title={ts('SelectLanguage')}
         placement="bottom"
         onClose={() => setOpen(false)}
         open={open}
         height="auto"
         styles={{
+          header: {
+            textAlign: 'center',
+            borderBottom: 'none',
+            paddingTop: '24px',
+          },
           body: {
-            padding: 0,
+            padding: '12px 16px 32px 16px',
+            backgroundColor: 'var(--background)',
           },
         }}
       >
-        <List
-          dataSource={languages}
-          renderItem={(item) => (
-            <List.Item
-              className="cursor-pointer px-4 py-3 transition-colors"
+        <div className="flex flex-col gap-3">
+          {languages.map((item) => (
+            <div
+              key={item.code}
+              className="flex items-center justify-between p-5 rounded-2xl cursor-pointer transition-all active:scale-95"
               onClick={() => handleLanguageChange(item.code)}
               style={{
                 backgroundColor: locale === item.code ? 'var(--surface)' : 'transparent',
+                boxShadow: locale === item.code ? '0 4px 12px var(--border)' : 'none',
               }}
             >
-              <div className="flex items-center justify-between w-full">
-                <span style={{ color: 'var(--font-color)' }}>
-                  {t(item.code as any) || item.name}
-                </span>
-                {locale === item.code && (
-                  <IconCheck className="w-5 h-5" style={{ color: 'var(--primary)' }} />
-                )}
-              </div>
-            </List.Item>
-          )}
-        />
+              <span 
+                className={`text-lg ${locale === item.code ? 'font-bold' : ''}`}
+                style={{ color: 'var(--font-color)' }}
+              >
+                {t(item.code as any) || item.name}
+              </span>
+              {locale === item.code && (
+                <IconCheck size={20} style={{ color: 'var(--primary)' }} />
+              )}
+            </div>
+          ))}
+        </div>
       </Drawer>
     </>
   );
 }
-

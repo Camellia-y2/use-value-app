@@ -5,6 +5,7 @@
 :root {
   /* --- 基础色板  --- */
   --primary: #b1f641;
+  --primary-foreground: #000000;
   
   --background: #f4f5fb;
   --foreground: #feffff; /* Slate-900 */
@@ -24,12 +25,25 @@
   --ai: #a6e541;
 
   --ai-color: var(--ai);
+
+  /* --- UI 语义色板 --- */
+  --ui-blue: #3b82f6;
+  --ui-cyan: #06b6d4;
+  --ui-gray: #6b7280;
+  --ui-pink: #ec4899;
+  --ui-yellow: #ca8a04;
+  --ui-green: #16a34a;
+  --ui-indigo: #4f46e5;
+  --ui-orange: #f97316;
+  --ui-red: #ef4444;
+
+  --ui-icon-bg-opacity: 0.12;
 }
 
 /* 暗色模式 (通过 data-theme='dark' 触发，比媒体查询更可控) */
 [data-theme='dark'] {
-  --primary: #1677ff; /* 暗色下保持蓝色，或者稍微调亮 */
-  --primary-foreground: #ffffff;
+  --primary: #b1f641; 
+  --primary-foreground: #000000;
   
   --background: #0a0a0a;
   --foreground: #ededed;
@@ -42,7 +56,20 @@
   
   --border: #262626;
   --input: #262626;
-  --ring: #1668dc;
+  --ring: #b1f641;
+
+  /* 暗色模式下的 UI 语义色调整 (稍微调亮或增加饱和度) */
+  --ui-blue: #60a5fa;
+  --ui-cyan: #22d3ee;
+  --ui-gray: #9ca3af;
+  --ui-pink: #f472b6;
+  --ui-yellow: #facc15;
+  --ui-green: #4ade80;
+  --ui-indigo: #818cf8;
+  --ui-orange: #fb923c;
+  --ui-red: #f87171;
+
+  --ui-icon-bg-opacity: 0.2;
 
   /* Antd Mobile Dark overrides */
   --adm-color-box: #171717; /* 卡片背景 */
@@ -98,4 +125,14 @@ a:active {
 }
 .loader:before {
   content: "Loading UseValue";
+}
+/* 隐藏滚动条但保留滑动功能 */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
 }

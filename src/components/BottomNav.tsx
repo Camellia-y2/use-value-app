@@ -8,7 +8,8 @@ import {
   IconArchiveFilled, 
   IconChartPie2Filled, 
   IconSettingsFilled,
-  IconPlus 
+  IconPlus,
+  IconMessageFilled
 } from '@tabler/icons-react';
 import { path } from '@/lib/paths';
 
@@ -17,12 +18,11 @@ export default function BottomNav() {
   const pathname = usePathname();
   const router = useRouter();
 
-  // 判断是否应该隐藏底部导航栏（搜索页、AI页和添加页不显示）
+  // 判断是否应该隐藏底部导航栏（搜索页和添加页不显示）
   const shouldHideNav = () => {
     const searchPath = path(locale, 'search');
-    const aiPath = path(locale, 'ai');
     const addPath = path(locale, 'add');
-    return pathname.startsWith(searchPath) || pathname.startsWith(aiPath) || pathname.startsWith(addPath);
+    return pathname.startsWith(searchPath) || pathname.startsWith(addPath);
   };
 
   // 如果应该隐藏，直接返回 null
@@ -38,6 +38,7 @@ export default function BottomNav() {
     }
     const navPaths = [
       path(locale, 'archive'),
+      path(locale, 'ai'),
       path(locale, 'stats'),
       path(locale, 'settings'),
       path(locale, 'add'),
@@ -62,6 +63,10 @@ export default function BottomNav() {
       icon: IconArchiveFilled,
     },
     {
+      key: path(locale, 'ai'),
+      icon: IconMessageFilled,
+    },
+    {
       key: path(locale, 'stats'),
       icon: IconChartPie2Filled,
     },
@@ -83,8 +88,8 @@ export default function BottomNav() {
             className="relative overflow-hidden rounded-full border-2 flex items-center justify-between p-1"
             style={{ 
               backgroundColor: 'var(--surface)', 
-              width: '83%',
-              height: '60px',
+              width: '84%',
+              height: '65px',
               borderColor: 'transparent',
               boxShadow: '0 4px 6px rgba(0, 0, 0, 0.01), 0 2px 4px rgba(0, 0, 0, 0.02), 0 -4px 6px rgba(0, 0, 0, 0.01), 0 -2px 4px rgba(0, 0, 0, 0.01)'
             }}
@@ -118,7 +123,7 @@ export default function BottomNav() {
         type="primary"
         shape="circle"
         onClick={() => router.push(path(locale, 'add'))}
-        className="fixed bottom-5 right-4 z-50 flex items-center justify-center"
+        className="fixed bottom-5 right-4 z-50 flex items-center justify-center transition-all active:scale-95"
         style={{
           width: 56,
           height: 56,

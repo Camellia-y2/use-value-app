@@ -25,10 +25,10 @@ export default function TopNav() {
   }
 
   return (
-    <div className="fixed right-4 z-50 flex justify-end items-center p-1 gap-1  w-full"
+    <div className="fixed right-4 z-50 flex justify-end items-center p-1 w-full"
     style={{
-      width: 95,
-      height: 40,
+      width: 42,
+      height: 34,
       borderRadius: '20px',
       backgroundColor: 'var(--surface)',
       boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.05), 0 -4px 6px -1px rgba(0, 0, 0, 0.02), 0 -2px 4px -1px rgba(0, 0, 0, 0.03)',
@@ -41,10 +41,10 @@ export default function TopNav() {
           style={{
             color: 'var(--font-color)',
           }}
-          icon={<IconSearch className="w-6 h-6" strokeWidth={2.5} />}
+          icon={<IconSearch className="w-7 h-5" strokeWidth={2.5} />}
         />
       </Link>
-      <Link href={path(locale, 'ai')}>
+      {/* <Link href={path(locale, 'ai')}>
         <Button
           type="text"
           className="flex items-center justify-center w-10 h-10 p-0 border-0 shadow-none"
@@ -53,7 +53,7 @@ export default function TopNav() {
           }}
           icon={<IconBrain className="w-6 h-6" strokeWidth={2.5} />}
         />
-      </Link>
+      </Link> */}
     </div>
   );
 }
