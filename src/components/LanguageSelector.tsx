@@ -7,9 +7,9 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 
 const languages = [
-  { code: 'zh', name: '简体中文' },
+  { code: 'ch', name: '简体中文' },
   { code: 'en', name: 'English' },
-  { code: 'zh-TW', name: '繁體中文' },
+  { code: 'tw', name: '繁體中文' },
   { code: 'ja', name: '日本語' },
   { code: 'ko', name: '한국어' },
 ];

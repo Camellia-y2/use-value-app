@@ -61,7 +61,33 @@
     "PinTop": "トップに固定",
     "ExcludeFromTotal": "総資産から除外",
     "ExcludeFromDaily": "日次コストから除外",
-    "Save": "保存"
+    "Save": "保存",
+    "OnboardingWelcome": "用値へようこそ",
+    "OnboardingSubtitle": "アイテムの実際のコストを記録し、支出決定を最適化",
+    "GuestMode": "ゲストモード",
+    "LoginRegister": "ログイン/登録（マルチデバイス同期）",
+    "PrivacyNotice": "ゲストモードでは、すべてのデータはこのデバイスのブラウザにのみ保存され、サーバーにアップロードされることはありません。アクセスできません。",
+    "ViewDetails": "詳細を見る",
+    "Email": "メール",
+    "Password": "パスワード",
+    "EnterEmail": "メールを入力",
+    "EnterPassword": "パスワードを入力",
+    "Login": "ログイン",
+    "Register": "登録",
+    "Or": "または",
+    "ContinueAsGuest": "ゲストとして続行",
+    "LoggingIn": "ログイン中...",
+    "Registering": "登録中...",
+    "LoginSuccess": "ログイン成功",
+    "RegisterSuccess": "登録成功！メール確認リンクを確認してください",
+    "LoginFailed": "ログイン失敗、メールとパスワードを確認してください",
+    "RegisterFailed": "登録失敗、再試行してください",
+    "FillAllFields": "すべてのフィールドを入力してください",
+    "PasswordMinLength": "パスワードは6文字以上必要です",
+    "NoAccount": "アカウントをお持ちでない場合",
+    "HasAccount": "既にアカウントをお持ちの場合",
+    "Details": "プライバシーに関するお知らせ",
+    "DetailsContent": "ゲストモードでは、すべてのデータ（アイテム情報、使用記録など）は現在のデバイスのブラウザのローカルストレージにのみ保存され、サーバーにアップロードされることはありません。これは次のことを意味します：\n\n✅ データは完全にプライベートです - 私たちはアクセスできません\n✅ データはこのデバイスでのみ表示され、他のデバイスに同期されません\n⚠️ ブラウザのデータをクリアしたり、デバイスを切り替えたりすると、データが失われます、マルチデバイス同期とデータバックアップには、アカウントを登録してログインすることをお勧めします。"
   },
   "Settings": {
     "Title": "設定",
@@ -87,13 +113,14 @@
     "PlatformDesc": "メルカリ、ラクマに対応予定",
     "SelectCurrency": "通貨を選択",
     "SelectLanguage": "言語を選択",
-    "Days": "日"
+    "Days": "日",
+    "Logout": "ログアウト"
   },
   "Languages": {
-    "zh": "简体中文",
+    "ch": "简体中文",
     "en": "English",
     "ja": "日本語",
     "ko": "한국어",
-    "zh-TW": "繁體中文"
+    "tw": "繁體中文"
   }
 }

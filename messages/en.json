@@ -61,7 +61,33 @@
     "PinTop": "Pin Top",
     "ExcludeFromTotal": "Exclude from Total",
     "ExcludeFromDaily": "Exclude from Daily",
-    "Save": "Save"
+    "Save": "Save",
+    "OnboardingWelcome": "Welcome to Use Value",
+    "OnboardingSubtitle": "Record real item costs and optimize your spending decisions",
+    "GuestMode": "Guest Mode",
+    "LoginRegister": "Login/Register (Multi-device sync)",
+    "PrivacyNotice": "In guest mode, all data is stored only in this device's browser and will not be uploaded to our servers. We cannot access it.",
+    "ViewDetails": "View Details",
+    "Email": "Email",
+    "Password": "Password",
+    "EnterEmail": "Enter email",
+    "EnterPassword": "Enter password",
+    "Login": "Login",
+    "Register": "Register",
+    "Or": "Or",
+    "ContinueAsGuest": "Continue as Guest",
+    "LoggingIn": "Logging in...",
+    "Registering": "Registering...",
+    "LoginSuccess": "Login successful",
+    "RegisterSuccess": "Registration successful! Please check your email for verification link",
+    "LoginFailed": "Login failed, please check email and password",
+    "RegisterFailed": "Registration failed, please try again",
+    "FillAllFields": "Please fill in all fields",
+    "PasswordMinLength": "Password must be at least 6 characters",
+    "NoAccount": "Don't have an account?",
+    "HasAccount": "Already have an account?",
+    "Details": "Privacy Notice",
+    "DetailsContent": "In guest mode, all your data (including item information, usage records, etc.) is stored only in your current device's browser local storage and will not be uploaded to our servers. This means:\n\n✅ Your data is completely private - we cannot access it\n✅ Data is only visible on this device and will not sync to other devices\n⚠️ Clearing browser data or switching devices will result in data loss,For multi-device sync and data backup, we recommend registering an account and logging in."
   },
   "Settings": {
     "Title": "Settings",
@@ -87,13 +113,14 @@
     "PlatformDesc": "Coming soon to Xianyu/Zhuanzhuan",
     "SelectCurrency": "Select Currency",
     "SelectLanguage": "Select Language",
-    "Days": "d"
+    "Days": "days",
+    "Logout": "Logout"
   },
   "Languages": {
-    "zh": "简体中文",
+    "ch": "简体中文",
     "en": "English",
     "ja": "日本語",
     "ko": "한국어",
-    "zh-TW": "繁體中文"
+    "tw": "繁體中文"
   }
 }

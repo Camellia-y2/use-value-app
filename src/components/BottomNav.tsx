@@ -123,7 +123,7 @@ export default function BottomNav() {
         type="primary"
         shape="circle"
         onClick={() => router.push(path(locale, 'add'))}
-        className="fixed bottom-5 right-4 z-50 flex items-center justify-center transition-all active:scale-95"
+        className="fixed bottom-5 right-[4%] z-50 flex items-center justify-center transition-all active:scale-95"
         style={{
           width: 56,
           height: 56,

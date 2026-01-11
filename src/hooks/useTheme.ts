@@ -6,6 +6,7 @@ type Theme = 'light' | 'dark';
 
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>('light');
+  // 是否已挂载, 避免SSR水合问题，SSR无localStorage等
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -18,11 +19,11 @@ export function useTheme() {
   }, []);
 
   const applyTheme = (newTheme: Theme) => {
-    const root = document.documentElement;
+    const root = document.documentElement; // 获取根元素
     if (newTheme === 'dark') {
-      root.setAttribute('data-theme', 'dark');
+      root.setAttribute('data-theme', 'dark'); // 设置暗色主题，[data-theme="dark"] 
     } else {
-      root.removeAttribute('data-theme');
+      root.removeAttribute('data-theme');  // 移除属性（默认浅色） :root {}
     }
   };
 

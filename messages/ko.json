@@ -61,7 +61,33 @@
     "PinTop": "상단 고정",
     "ExcludeFromTotal": "총 자산에서 제외",
     "ExcludeFromDaily": "일일 비용에서 제외",
-    "Save": "저장"
+    "Save": "저장",
+    "OnboardingWelcome": "용치에 오신 것을 환영합니다",
+    "OnboardingSubtitle": "항목의 실제 비용을 기록하고 지출 결정을 최적화",
+    "GuestMode": "게스트 모드",
+    "LoginRegister": "로그인/등록 (다중 기기 동기화)",
+    "PrivacyNotice": "게스트 모드에서는 모든 데이터가 이 기기의 브라우저에만 저장되며 서버에 업로드되지 않습니다. 액세스할 수 없습니다.",
+    "ViewDetails": "세부 정보 보기",
+    "Email": "이메일",
+    "Password": "비밀번호",
+    "EnterEmail": "이메일 입력",
+    "EnterPassword": "비밀번호 입력",
+    "Login": "로그인",
+    "Register": "등록",
+    "Or": "또는",
+    "ContinueAsGuest": "게스트로 계속",
+    "LoggingIn": "로그인 중...",
+    "Registering": "등록 중...",
+    "LoginSuccess": "로그인 성공",
+    "RegisterSuccess": "등록 성공! 이메일 확인 링크를 확인하세요",
+    "LoginFailed": "로그인 실패, 이메일과 비밀번호를 확인하세요",
+    "RegisterFailed": "등록 실패, 다시 시도하세요",
+    "FillAllFields": "모든 필드를 입력하세요",
+    "PasswordMinLength": "비밀번호는 최소 6자 이상이어야 합니다",
+    "NoAccount": "계정이 없으신가요?",
+    "HasAccount": "이미 계정이 있으신가요?",
+    "Details": "개인정보 보호 안내",
+    "DetailsContent": "게스트 모드에서는 모든 데이터(항목 정보, 사용 기록 등)가 현재 기기의 브라우저 로컬 스토리지에만 저장되며 서버에 업로드되지 않습니다. 이것은 다음을 의미합니다:\n\n✅ 데이터는 완전히 비공개입니다 - 우리는 액세스할 수 없습니다\n✅ 데이터는 이 기기에서만 표시되며 다른 기기와 동기화되지 않습니다\n⚠️ 브라우저 데이터를 지우거나 기기를 전환하면 데이터가 손실됩니다,다중 기기 동기화 및 데이터 백업을 위해서는 계정을 등록하고 로그인하는 것을 권장합니다."
   },
   "Settings": {
     "Title": "설정",
@@ -87,13 +113,14 @@
     "PlatformDesc": "중고나라, 당근마켓 지원 예정",
     "SelectCurrency": "통화 선택",
     "SelectLanguage": "언어 선택",
-    "Days": "일"
+    "Days": "일",
+    "Logout": "로그아웃"
   },
   "Languages": {
-    "zh": "简体中文",
+    "ch": "简体中文",
     "en": "English",
     "ja": "日本語",
     "ko": "한국어",
-    "zh-TW": "繁體中文"
+    "tw": "繁體中文"
   }
 }

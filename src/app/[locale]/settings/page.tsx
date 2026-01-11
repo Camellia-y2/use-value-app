@@ -1,7 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Switch, Modal, Slider, Drawer } from 'antd';
+import OnboardingModal from '@/components/login/OnboardingModal';
+import { createClient } from '@/lib/supabase/client';
 import { 
   IconSun, 
   IconMoon, 
@@ -16,26 +18,72 @@ import {
   IconShirt,
   IconCloudUpload,
   IconDatabaseExport,
-  IconShoppingBag
+  IconShoppingBag,
+  IconLogout
 } from '@tabler/icons-react';
 import { useTheme } from '@/hooks/useTheme';
 import { useTranslations } from 'next-intl';
 import LanguageSelector from '@/components/LanguageSelector';
+import ListItem from '@/components/settings/ListItem';
 
 export default function SettingsPage() {
   const { theme, toggleTheme, mounted } = useTheme();
   const t = useTranslations('Settings');
   const [isMilestoneModalOpen, setIsMilestoneModalOpen] = useState(false);
   const [isCurrencyDrawerOpen, setIsCurrencyDrawerOpen] = useState(false);
+  const [isOnboardingOpen, setIsOnboardingOpen] = useState(false);
   const [currency, setCurrency] = useState('CNY');
+
+  // 使用 useMemo 缓存 supabase 客户端实例，避免每次渲染都创建新实例，调用两次api
+  const supabase = useMemo(() => createClient(), []);
   
   const [aiEnabled, setAiEnabled] = useState(true);
   const [idleThreshold, setIdleThreshold] = useState(30);
   const [includeInTotal, setIncludeInTotal] = useState(false);
   const [reminderEnabled, setReminderEnabled] = useState(true);
+  
+  // 用户状态
+  const [user, setUser] = useState<any>(null);
+  // 是否已登录
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // 是否是浅色主题
+  const isLightTheme = theme === 'light';
 
+  // 检查用户登录状态
+  useEffect(() => {
+    const checkAuth = async () => {
+      const userMode = localStorage.getItem('userMode');
+      if (userMode === 'authenticated') {
+        const { data: { user: currentUser } } = await supabase.auth.getUser();
+        if (currentUser) {
+          setUser(currentUser);
+          setIsAuthenticated(true);
+        } else {
+          // 如果 Supabase 中没有用户，清除本地状态
+          localStorage.setItem('userMode', 'guest');
+          setIsAuthenticated(false);
+        }
+      } else {
+        setIsAuthenticated(false);
+      }
+    };
+    checkAuth();
+    // supabase 已经通过 useMemo 缓存， 保证稳定，不需要作为依赖项
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // 避免SSR水合不一致问题，在客户端挂载前不渲染
   if (!mounted) {
-    return null;
+    return null; 
+  }
+
+  // 登出
+  const handleLogOut = async () => {
+    await supabase.auth.signOut();
+    localStorage.setItem('userMode', 'guest');
+    setUser(null);
+    setIsAuthenticated(false);
+    window.location.reload(); // 刷新页面
   }
 
   const milestones = [
@@ -66,34 +114,6 @@ export default function SettingsPage() {
     </section>
   );
 
-  const ListItem = ({ 
-    icon: Icon, 
-    iconBg, 
-    iconColor, 
-    label, 
-    description,
-    rightContent,
-    onClick,
-    isLast = false
-  }: any) => (
-    <div 
-      className={`flex items-center justify-between p-4 ${!isLast ? 'border-b' : ''} ${onClick ? 'cursor-pointer active:opacity-70' : ''}`}
-      style={{ borderColor: 'var(--border)' }}
-      onClick={onClick}
-    >
-      <div className="flex items-center gap-3">
-        <div className={`p-2 rounded-xl flex items-center justify-center`} style={{ backgroundColor: iconBg, color: iconColor }}>
-          <Icon size={20} stroke={2} />
-        </div>
-        <div className="flex flex-col">
-          <span className="font-medium" style={{ color: 'var(--font-color)' }}>{label}</span>
-          {description && <span className="text-xs" style={{ color: 'var(--font-color-secondary)' }}>{description}</span>}
-        </div>
-      </div>
-      <div>{rightContent}</div>
-    </div>
-  );
-
   return (
     <main className="flex min-h-screen flex-col p-4 pb-32" style={{ backgroundColor: 'var(--background)' }}>
       {/* 账号区块 */}
@@ -103,11 +123,23 @@ export default function SettingsPage() {
           className="rounded-3xl p-6 flex items-center gap-4 shadow-sm"
           style={{ backgroundColor: 'var(--surface)' }}
         >
-          <div className="w-16 h-16 rounded-full flex items-center justify-center overflow-hidden" style={{ backgroundColor: 'var(--primary)' }}>
+          <div 
+            onClick={!isAuthenticated ? () => setIsOnboardingOpen(true) : undefined}
+            className={`w-16 h-16 rounded-full flex items-center justify-center overflow-hidden ${!isAuthenticated ? 'cursor-pointer active:scale-95 transition-transform' : ''}`}
+            style={{ backgroundColor: 'var(--primary)' }}
+          >
             <IconUser size={32} style={{ color: 'var(--primary-foreground)' }} stroke={1.5} />
           </div>
-          <div className="flex flex-col gap-1">
-            <span className="text-xl font-bold" style={{ color: 'var(--font-color)' }}>{t('Guest')}</span>
+          <div className="flex flex-col gap-1 flex-1">
+            {/* 用户邮箱/游客 */}
+            <span 
+              onClick={!isAuthenticated ? () => setIsOnboardingOpen(true) : undefined}
+              className={`text-[18px] font-bold ${!isAuthenticated ? 'cursor-pointer hover:opacity-80 transition-opacity' : ''}`}
+              style={{ color: 'var(--font-color-secondary)' }}
+            >
+              {isAuthenticated && user?.email ? user.email : t('Guest')}
+            </span>
+           {/* 榨取里程碑 */}
             <div 
               onClick={() => setIsMilestoneModalOpen(true)}
               className="flex items-center gap-1 px-3 py-1 rounded-full text-xs cursor-pointer w-fit"
@@ -131,20 +163,20 @@ export default function SettingsPage() {
             <div className="flex p-1 rounded-xl gap-1" style={{ backgroundColor: 'var(--background)' }}>
               <button 
                 onClick={() => theme === 'dark' && toggleTheme()}
-                className={`p-2 rounded-lg transition-all ${theme === 'light' ? 'shadow-sm' : ''}`}
+                className={`p-2 rounded-lg transition-all ${isLightTheme ? 'shadow-sm' : ''}`}
                 style={{ 
-                  backgroundColor: theme === 'light' ? 'var(--surface)' : 'transparent',
-                  color: theme === 'light' ? 'var(--ui-yellow)' : 'var(--font-color-secondary)'
+                  backgroundColor: isLightTheme ? 'var(--surface)' : 'transparent',
+                  color: isLightTheme ? 'var(--ui-yellow)' : 'var(--font-color-secondary)'
                 }}
               >
                 <IconSun size={18} />
               </button>
               <button 
                 onClick={() => theme === 'light' && toggleTheme()}
-                className={`p-2 rounded-lg transition-all ${theme === 'dark' ? 'shadow-sm' : ''}`}
+                className={`p-2 rounded-lg transition-all ${!isLightTheme ? 'shadow-sm' : ''}`}
                 style={{ 
-                  backgroundColor: theme === 'dark' ? 'var(--surface)' : 'transparent',
-                  color: theme === 'dark' ? 'var(--ui-yellow)' : 'var(--font-color-secondary)'
+                  backgroundColor: !isLightTheme ? 'var(--surface)' : 'transparent',
+                  color: !isLightTheme ? 'var(--ui-yellow)' : 'var(--font-color-secondary)'
                 }}
               >
                 <IconMoon size={18} />
@@ -229,15 +261,17 @@ export default function SettingsPage() {
 
       {/* 高级功能 */}
       <CardGroup title={t('Advanced')}>
-        <ListItem 
-          icon={IconCloudUpload} 
-          iconBg="color-mix(in srgb, var(--ui-indigo), transparent calc(100% - (var(--ui-icon-bg-opacity) * 100%)))" 
-          iconColor="var(--ui-indigo)" 
-          label={t('UpgradeAccount')}
-          description={t('UpgradeDesc')}
-          onClick={() => {}}
-          rightContent={<IconChevronRight size={18} style={{ color: 'var(--font-color-secondary)' }} />}
-        />
+        {!isAuthenticated && (
+          <ListItem 
+            icon={IconCloudUpload} 
+            iconBg="color-mix(in srgb, var(--ui-indigo), transparent calc(100% - (var(--ui-icon-bg-opacity) * 100%)))" 
+            iconColor="var(--ui-indigo)" 
+            label={t('UpgradeAccount')}
+            description={t('UpgradeDesc')}
+            onClick={() => setIsOnboardingOpen(true)}
+            rightContent={<IconChevronRight size={18} style={{ color: 'var(--font-color-secondary)' }} />}
+          />
+        )}
         <ListItem 
           icon={IconDatabaseExport} 
           iconBg="color-mix(in srgb, var(--ui-orange), transparent calc(100% - (var(--ui-icon-bg-opacity) * 100%)))" 
@@ -252,10 +286,21 @@ export default function SettingsPage() {
           iconColor="var(--ui-red)" 
           label={t('PlatformIntegration')}
           description={t('PlatformDesc')}
-          isLast
+          isLast={!isAuthenticated}
           onClick={() => {}}
           rightContent={<IconChevronRight size={18} style={{ color: 'var(--font-color-secondary)' }} />}
         />
+        {isAuthenticated && (
+          <ListItem 
+            icon={IconLogout} 
+            iconBg="color-mix(in srgb, var(--ui-red), transparent calc(100% - (var(--ui-icon-bg-opacity) * 100%)))" 
+            iconColor="var(--ui-red)" 
+            label={t('Logout')}
+            onClick={handleLogOut}
+            isLast
+            rightContent={<IconChevronRight size={18} style={{ color: 'var(--font-color-secondary)' }} />}
+          />
+        )}
       </CardGroup>
 
       {/* 里程碑详情弹窗 */}
@@ -340,6 +385,25 @@ export default function SettingsPage() {
           ))}
         </div>
       </Drawer>
+
+      {/* 引导页弹窗 */}
+      <OnboardingModal
+        open={isOnboardingOpen}
+        onClose={() => setIsOnboardingOpen(false)}
+        onGuestMode={async () => {
+          localStorage.setItem('userMode', 'guest');
+          setIsOnboardingOpen(false);
+          window.location.reload();
+        }}
+        onLoginSuccess={async () => {
+          const { data: { user } } = await supabase.auth.getUser();
+          if (user) {
+            localStorage.setItem('userMode', 'authenticated');
+            setIsOnboardingOpen(false);
+            window.location.reload();
+          }
+        }}
+      />
     </main>
   );
 }

@@ -61,7 +61,33 @@
     "PinTop": "置頂",
     "ExcludeFromTotal": "不計入總資產",
     "ExcludeFromDaily": "不計入日均",
-    "Save": "保存"
+    "Save": "保存",
+    "OnboardingWelcome": "歡迎使用 用值",
+    "OnboardingSubtitle": "記錄物品真實成本，優化你的消費決策",
+    "GuestMode": "遊客體驗",
+    "LoginRegister": "登錄/註冊（多設備同步）",
+    "PrivacyNotice": "遊客模式下，所有數據僅存於本設備瀏覽器，不會上傳到服務器，我們無法訪問。",
+    "ViewDetails": "查看詳情",
+    "Email": "郵箱",
+    "Password": "密碼",
+    "EnterEmail": "請輸入郵箱",
+    "EnterPassword": "請輸入密碼",
+    "Login": "登錄",
+    "Register": "註冊",
+    "Or": "或",
+    "ContinueAsGuest": "繼續遊客模式",
+    "LoggingIn": "登錄中...",
+    "Registering": "註冊中...",
+    "LoginSuccess": "登錄成功",
+    "RegisterSuccess": "註冊成功！請檢查郵箱驗證鏈接",
+    "LoginFailed": "登錄失敗，請檢查郵箱和密碼",
+    "RegisterFailed": "註冊失敗，請重試",
+    "FillAllFields": "請填寫完整信息",
+    "PasswordMinLength": "密碼至少需要6位",
+    "NoAccount": "還沒有賬號？",
+    "HasAccount": "已有賬號？",
+    "Details": "隱私說明",
+    "DetailsContent": "遊客模式下，您的所有數據（包括物品信息、使用記錄等）僅存儲在您當前設備的瀏覽器本地存儲中，不會上傳到我們的服務器。這意味著：\n\n✅ 數據完全私密，我們無法訪問\n✅ 數據僅在本設備可見，不會同步到其他設備\n⚠️ 清除瀏覽器數據或更換設備會導致數據丟失，如需多設備同步和數據備份，建議註冊賬號並登錄。"
   },
   "Settings": {
     "Title": "設置",
@@ -87,13 +113,14 @@
     "PlatformDesc": "即將支持閒魚、轉轉",
     "SelectCurrency": "選擇幣碼",
     "SelectLanguage": "選擇語言",
-    "Days": "天"
+    "Days": "天",
+    "Logout": "退出登錄"
   },
   "Languages": {
-    "zh": "简体中文",
+    "ch": "简体中文",
     "en": "English",
     "ja": "日本語",
     "ko": "한국어",
-    "zh-TW": "繁體中文"
+    "tw": "繁體中文"
   }
 }
